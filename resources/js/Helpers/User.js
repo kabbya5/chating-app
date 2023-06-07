@@ -14,7 +14,7 @@ class User{
 
         if(Token.isValid(access_token)){ 
             AppStorage.store(username,access_token)
-            window.location = '/profile'
+            window.location = '/user/profile'
         }
 
     }
@@ -32,7 +32,7 @@ class User{
     }
     logout(){
         AppStorage.clear()
-        window.location = '/profile'
+        window.location = '/user/profile'
     }
     name(){
         if(this.loggedIn()){

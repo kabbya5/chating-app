@@ -1,9 +1,12 @@
 <template>
     <div>
         <Navbar/>
-        <div class="my-20">
-            <router-view :key="$route.fullPath"> </router-view>   
+        <div class="container mx-auto">
+            <div class="my-20 px-4">
+                <router-view :key="$route.fullPath"> </router-view>   
+            </div>
         </div>
+        
         
         <FooterVue />  
     </div>
