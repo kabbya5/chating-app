@@ -2,8 +2,11 @@
 
 namespace App\Exceptions;
 
+use Exception;
+use GuzzleHttp\Psr7\Response;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
+use Tymon\JWTAuth\Exceptions\JWTException;
 
 class Handler extends ExceptionHandler
 {
@@ -45,6 +48,12 @@ class Handler extends ExceptionHandler
     {
         $this->reportable(function (Throwable $e) {
             //
+        });
+
+        $this->renderable(function(Request $request,Exception $e) {
+            if($e instanceof JWTException){
+                return response(['error' => 'Token is not provided']);
+            };
         });
     }
 }

@@ -5,14 +5,14 @@ namespace App\Http\Controllers;
 use App\Http\Resources\QuestionResource;
 use App\Models\Question;
 use Illuminate\Http\Request;
+use Auth;
 
 class QuestionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct(){
+        $this->middleware('JWT', ['except' => ['index','show']]);
+    }
+
     public function index()
     {
         return QuestionResource::collection(Question::latest()->get());
@@ -37,6 +37,9 @@ class QuestionController extends Controller
     public function store(Request $request)
     {
         auth()->user()->questions()->create($request->all());
+        return response()->json([
+            auth()->user()->name,
+        ]);
     }
 
     /**

@@ -11,6 +11,13 @@ class Question extends Model
 
     protected $guarded =  [];
 
+    protected static function boot(){
+        parent::boot();
+        static::creating(function($question){
+            $question->slug = str_slug($question->title);
+        });
+    }
+
     public function user(){
         return $this->belongsTo(User::class);
     }
@@ -30,4 +37,6 @@ class Question extends Model
     public function getPathAttribute(){
         return "$this->slug";
     }
+
+
 }
