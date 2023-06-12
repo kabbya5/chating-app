@@ -10,10 +10,9 @@
                 <span class="text-sm font-[500] text-[#313131]"> 
                     {{ question.created_date }} asked by {{ question.user }}
                 </span>
-
-                <p class="text-[#313131] font-[400] leading-7 text-lg">
-                    {{ question.body }}
-                </p>
+                <div class="ql-snow mt-5">
+                    <p class="ql-editor" v-html="question.body"></p>
+                </div>
             </div>
         </div>
         <div class="sidebar">

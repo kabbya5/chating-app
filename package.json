@@ -19,6 +19,7 @@
         "vue": "^3.2.37"
     },
     "dependencies": {
+        "@vueup/vue-quill": "^1.2.0",
         "laravel-vite": "^0.0.24",
         "vue-router": "^4.1.6",
         "vuetify": "^3.1.13"
