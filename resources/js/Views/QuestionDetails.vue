@@ -1,6 +1,6 @@
 <template>
     <div>
-        <edit-question v-if="edditing" :data="question" :errorData="error"> </edit-question>
+        <edit-question v-if="edditing" :data="question" :error="errors"> </edit-question>
         <div v-else class="">
             <div class="flex items-center justify-between">
                 <h4> {{ question.title }}</h4>
@@ -27,7 +27,7 @@
         data(){
             return{
                 question:'',
-                error:'',
+                errors:'',
                 own:'',
                 edditing:false,
             }
@@ -53,7 +53,7 @@
             updateQuestion(data){
                 axios.put('/api/questions/'+this.question.slug,data)
                 .then(res => this.$router.push({name:'home'}))
-                .catch(error => this.error = error.response.data.errors)
+                .catch(error => this.errors = error.response.data.errors)
             }
         }
     }

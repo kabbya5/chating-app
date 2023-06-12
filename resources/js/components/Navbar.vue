@@ -34,7 +34,8 @@ export default {
             items:[
                 {title:'Home', to:{name:'home'}, show:true},
                 {title:'Ask Question', to:{name:'ask_question'}, show:User.loggedIn()},
-                {title:'Profile', to:{name:'profile'}, show:'true'},
+                {title:'Profile', to:{name:'profile'}, show:true},
+                {title:'Category', to:{name:'createCategory'}, show:true},
                 {title:'Login', to:{name:'login'}, show: !User.loggedIn()},
                 {title:'Logout', to:{name:'logout'}, show: User.loggedIn()},
             ]

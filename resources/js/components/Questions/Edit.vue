@@ -66,7 +66,6 @@
             this.form.title = this.data.title  
             this.form.body = this.data.body 
             this.form.category_id = this.data.category_id
-            this.error = this.errorData
         },
         
         created(){

@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col-reverse items-start">
+    <div class="flex flex-col-reverse md:flex-row">
         <div class="question">
             <div class="question body" 
             v-for="question in questions" :key="question.id">
@@ -15,14 +15,17 @@
                 </div>
             </div>
         </div>
-        <div class="sidebar">
-
-        </div>
+        
+        <side-bar> </side-bar>
+        
     </div>
 </template>
 
 <script>
+import Sidebar from '../components/Sidebar.vue';
+
 export default{
+    components:{'side-bar': Sidebar,},
     data(){
         return{
             questions:{},
