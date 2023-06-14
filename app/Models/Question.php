@@ -11,6 +11,8 @@ class Question extends Model
 
     protected $guarded =  [];
 
+    protected $appends= ['replies'];
+
     protected static function boot(){
         parent::boot();
         static::creating(function($question){
@@ -23,7 +25,7 @@ class Question extends Model
     }
 
     public function replies(){
-        return $this->hasMany(Replay::class);
+        return $this->hasMany(Replay::class)->latest();
     }
 
     public function category(){
@@ -35,7 +37,7 @@ class Question extends Model
     }
 
     public function getPathAttribute(){
-        return "$this->slug";
+        return $this->slug;
     }
 
 

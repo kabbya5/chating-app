@@ -14,15 +14,27 @@
                 <a @click="deleteQuestion"  class="text-xl font-semibold bg-red-800 leading-7 text-white px-6 py-2 capitalize rounded-md"> delete </a>
                 <a @click="edit" class="text-xl font-semibold bg-blue-800 leading-7 text-white px-6 py-2 capitalize ml-4 rounded-md"> edit</a>
             </div>
+
+            <hr class="my-4">
+        <replies :replies="question.replies"> </replies>
+
+        <create-reply :questionSlug="question.slug"> </create-reply>
         </div>
+        
+        
+        
     </div>
 </template>
 
 <script>
+    import Replies from '../components/reply/Replies.vue';
     import Edit from '../components/Questions/Edit.vue';
+    import CreateReply from '../components/reply/CreateReply.vue';
     export default{
         components:{
             'edit-question': Edit,
+            'replies':Replies,
+            'create-reply':CreateReply,
         },
         data(){
             return{
