@@ -4,7 +4,7 @@
         <div v-else class="">
             <div class="flex items-center justify-between">
                 <h4> {{ question.title }}</h4>
-                <h2 class="text-white font-sembold text-md bg-green-800 px-5 py-1"> 3 replies </h2>
+                <h2 class="text-white font-sembold text-md bg-green-800 px-5 py-1"> {{ question.replies_count }} </h2>
             </div>
             
             <div class="ql-snow mt-5 -ml-6">
@@ -16,9 +16,9 @@
             </div>
 
             <hr class="my-4">
-        <replies :replies="question.replies"> </replies>
+            <replies :replies="question.replies"> </replies>
 
-        <create-reply :questionSlug="question.slug"> </create-reply>
+            <create-reply :questionSlug="question.slug"> </create-reply>
         </div>
         
         

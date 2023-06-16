@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\ReplayResource;
 use App\Models\Question;
 use App\Models\Replay;
+use App\Notifications\NewReplyNotification;
 use Illuminate\Http\Request;
 use Auth;
 
@@ -21,17 +22,11 @@ class ReplayController extends Controller
 
     public function store(Request $request,Question $question)
     {
-        return $question->replies()->create($request->all() + ['user_id' => auth()->id()]);
-    }
+        $replay = $question->replies()->create($request->all() + ['user_id' => auth()->id()]);
 
-    public function show(Replay $replay)
-    {
-        //
-    }
+        $user = $question->user;
 
-    public function update(Question $question,Request $request, Replay $replay)
-    {
-        
+        $user->notify(new NewReplyNotification($replay));
     }
 
     public function destroy(Question $question,Replay $replay)

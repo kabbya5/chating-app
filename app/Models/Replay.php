@@ -19,7 +19,7 @@ class Replay extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function like(){
-        return $this->belongsTo(Like::class);
+    public function likes(){
+        return $this->hasMany(Like::class);
     }
 }

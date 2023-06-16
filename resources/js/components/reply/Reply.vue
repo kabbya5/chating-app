@@ -1,8 +1,13 @@
 <template>
     <div>
-        <div class="flex">
-            <h4 class="text-[#111] text-[24px] font-semibold leading-[30px]">{{data.user}}</h4>
-            <span class="ml-6 mt-1 text-[#444] font-semibold"> {{data.created_at}}</span>
+        <div class="flex justify-between">
+            <div class="flex">
+                <h4 class="text-[#111] text-[24px] font-semibold leading-[30px]">{{data.user}}</h4>
+                <span class="ml-6 mt-1 text-[#444] font-semibold"> {{data.created_at}}</span>
+            </div>
+
+            <like :reply="data"> </like>
+            
         </div>
 
         <hr class="my-2">
@@ -19,7 +24,11 @@
 </template>
 
 <script>
+import Like from '../likes/Like.vue';
 export default{
+    components:{
+        'like':Like,
+    },
     props:['data'],
     data(){
         return{

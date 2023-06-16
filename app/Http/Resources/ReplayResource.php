@@ -14,13 +14,20 @@ class ReplayResource extends JsonResource
      */
     public function toArray($request)
     {
-        return [
+        $reply = [
             'reply' => $this->body,
             'id' => $this->id,
             'question_slug' => $this->question->slug,
             'user' => $this->user->name,
-            'user_id' => $this->user_id,
+            'like_count' =>$this->likes->count(),
+            'liked' =>  false,
             'created_at' => $this->created_at->diffForHumans(),
         ];
+        $liked = $this->likes()->where('user_id',auth()->id())->first();
+        if($liked){
+            $reply['liked'] = true;
+        }
+
+        return $reply;
     }
 }
